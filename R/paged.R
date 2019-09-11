@@ -107,6 +107,29 @@ jss_paged = function(
   jss_format
 }
 
+#' Create a manuscript for for submission to MDPI
+#'
+#' This output format is similar to \code{\link{html_paged}}.
+#' @param ...,css,template,csl,highlight,pandoc_args Arguments passed to \code{\link{html_paged}()}.
+#' @return An R Markdown output format.
+#' @export
+mdpi_paged = function(
+  ..., css = c('default', 'mdpi'),
+  template = pkg_resource('html', 'mdpi-paged.html'),
+  csl = pkg_resource('csl', 'mdpi.csl'),
+  highlight = NULL, pandoc_args = NULL, toc = FALSE
+) {
+  mdpi_format = html_paged(
+    ..., template = template, css = css,
+    csl = csl, highlight = highlight,
+    pandoc_args = c(
+      '--metadata', 'link-citations=true','--mathjax',
+      pandoc_args
+    )
+  )
+  mdpi_format
+}
+
 #' Create a paged HTML thesis document suitable for printing
 #'
 #' This output format is similar to \code{\link{html_paged}}. The only

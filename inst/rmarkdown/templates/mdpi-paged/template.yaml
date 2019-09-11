@@ -1,0 +1,4 @@
+name: MDPI Manuscript HTML Document
+description: >
+   Create a paged HTML article for an MDPI manuscript submission.
+create_dir: FALSE
